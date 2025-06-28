@@ -38,20 +38,19 @@ const Reservation = () => {
   };
 
   return (
-    <section id="reservation" className="py-16 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-
+    <section id="reservation" className="py-20 px-4 sm:px-6 lg:px-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Image Section */}
         <div className="flex justify-center">
           <img
             src="/reservation.png"
-            alt="Reservation"
-            className="w-full max-w-md rounded-lg shadow-lg"
+            alt="Reservation Illustration"
+            className="w-full max-w-lg md:max-w-xl"
           />
         </div>
 
         {/* Form Section */}
-        <div className="bg-white p-8 rounded-lg shadow-md w-full">
+        <div className="bg-gray-50 p-8 rounded-xl shadow-md w-full">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Make a Reservation
           </h1>
@@ -59,7 +58,7 @@ const Reservation = () => {
             For further questions, please call.
           </p>
 
-          <form onSubmit={handleReservation} className="space-y-4">
+          <form onSubmit={handleReservation} className="space-y-5">
             {/* Name Inputs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <input
@@ -68,7 +67,8 @@ const Reservation = () => {
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="First Name"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
               <input
                 type="text"
@@ -76,7 +76,8 @@ const Reservation = () => {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Last Name"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
             </div>
 
@@ -87,14 +88,16 @@ const Reservation = () => {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Reservation Date"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
               <input
                 type="time"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Reservation Time"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
             </div>
 
@@ -106,7 +109,8 @@ const Reservation = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Email Address"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
               <input
                 type="tel"
@@ -114,17 +118,21 @@ const Reservation = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Phone Number"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
               />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              // className="ml-6 px-4 py-2 bg-black text-white rounded  transition"
-              className="w-full bg-black text-white py-2 rounded hover:bg-orange-600 hover:text-back transition flex justify-center align-center"
+              className="w-full flex items-center justify-center gap-2 bg-black text-white py-2.5 rounded-md hover:bg-orange-600 transition duration-300 group"
             >
-              Reserve Now <HiOutlineArrowNarrowRight size={20} className="ml-1 mt-1" />
+              Reserve Now
+              <HiOutlineArrowNarrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform duration-200"
+              />
             </button>
           </form>
         </div>
