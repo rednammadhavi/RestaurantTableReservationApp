@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { errorMiddleware } from "../middlewares/error.js";
-import reservationRouter from "../routes/reservationRoute.js";
 
 dotenv.config({ path: "./config.env" });
 
@@ -10,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CROSS_ORGIN,
+    origin: process.env.CROSS_ORGIN || "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -18,6 +17,8 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+import reservationRouter from "../routes/reservationRoute.js";
 
 app.use("/api/v1/reservation", reservationRouter);
 

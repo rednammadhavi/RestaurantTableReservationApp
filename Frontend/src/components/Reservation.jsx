@@ -5,32 +5,41 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Reservation = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [phone, setPhone] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    date: "",
+    time: "",
+    phone: "",
+  });
+
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleReservation = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
         "http://localhost:3000/api/v1/reservation/send",
-        { firstName, lastName, email, phone, date, time },
+        formData,
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-      toast.success(data.message);
-      setFirstName("");
-      setLastName("");
-      setPhone("");
-      setEmail("");
-      setTime("");
-      setDate("");
+      toast.success(data.message || "Reservation Successful!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        date: "",
+        time: "",
+        phone: "",
+      });
       navigate("/success");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Reservation failed.");
@@ -63,21 +72,21 @@ const Reservation = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="text"
+                name="firstName"
                 placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={formData.firstName}
+                onChange={handleChange}
                 required
-                aria-label="First Name"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <input
                 type="text"
+                name="lastName"
                 placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={formData.lastName}
+                onChange={handleChange}
                 required
-                aria-label="Last Name"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -85,19 +94,19 @@ const Reservation = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
                 required
-                aria-label="Reservation Date"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <input
                 type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
                 required
-                aria-label="Reservation Time"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -105,21 +114,21 @@ const Reservation = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
                 required
-                aria-label="Email Address"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <input
                 type="tel"
+                name="phone"
                 placeholder="Phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={formData.phone}
+                onChange={handleChange}
                 required
-                aria-label="Phone Number"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
