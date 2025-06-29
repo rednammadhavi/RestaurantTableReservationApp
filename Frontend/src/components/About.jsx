@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const About = () => {
   return (
-    <section id="about" className="bg-white pt-20 px-4 sm:px-6 lg:px-20">
+    <section id="about" className="bg-white p-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <div>
@@ -35,13 +35,17 @@ const About = () => {
             <li>Exclusive Deals – Unlock discounts and special offers at partner restaurants.</li>
           </ul>
 
-          <Link
-            to="/"
+          <ScrollLink
+            to="menu"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-70}
             className="mt-8 inline-flex items-center gap-2 text-white bg-gray-800 hover:bg-orange-600 px-6 py-3 rounded-lg transition duration-300 group"
           >
             Explore Menu
             <HiOutlineArrowRight size={20} className="transition-transform duration-200 group-hover:translate-x-1" />
-          </Link>
+          </ScrollLink>
         </div>
 
         {/* Image Content */}

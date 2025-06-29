@@ -47,7 +47,7 @@ const Reservation = () => {
   };
 
   return (
-    <section id="reservation" className="py-20 px-4 sm:px-6 lg:px-20">
+    <section id="reservation" className="p-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Image Section */}
         <div className="flex justify-center">

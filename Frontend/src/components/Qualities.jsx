@@ -3,7 +3,7 @@ import { data } from '../restApi.json';
 
 const Qualities = () => {
   return (
-    <section id="qualities" className="pt-20 px-4 sm:px-6 lg:px-20">
+    <section id="qualities" className="p-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12">

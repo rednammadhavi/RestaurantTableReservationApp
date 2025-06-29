@@ -15,7 +15,7 @@ const HeroSection = () => {
     >
       <Navbar />
 
-      <div className="relative flex flex-col lg:flex-row w-full flex-grow bg-white/80 backdrop-blur-sm">
+      <div className="relative flex flex-col lg:flex-row w-full flex-grow bg-white/80 backdrop-blur-sm p-6">
         {/* Left Section */}
         <div className="flex-1 flex flex-col justify-center items-center px-4 sm:px-8 py-10 md:py-20 space-y-8 sm:space-y-10 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 leading-tight">
